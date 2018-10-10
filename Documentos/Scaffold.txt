@@ -1,14 +1,29 @@
-rails g scaffold country
-rails g scaffold state
-rails g scaffold city
-rails g scaffold town
-rails g scaffold type_user
-rails g scaffold unit
-rails g scaffold measurement_units
-rails g scaffold material
-rails g scaffold user
-rails g scaffold product
-rails g scaffold offer
-rails g scaffold photo
-rails g scaffold transaction
-rails g scaffold qualification
+rails g scaffold type_user name:uniq lock:boolean
+rails g scaffold country name lock:boolean
+rails g scaffold state name country:references lock:boolean
+rails g scaffold city name state:references lock:boolean
+rails g scaffold town name city:references lock:boolean
+rails g scaffold user phone:uniq email:uniq password_digest type_user:references town:references active:boolean lock:boolean
+rails g scaffold unit name:uniq lock:boolean
+rails g scaffold measurement_unit name:uniq lock:boolean
+rails g scaffold material name:uniq lock:boolean
+rails g scaffold product title description:text user:references unit:references material:references price:float amount:integer date_publish:datetime date_finish:datetime location:text collection_time:time active:boolean lock:boolean
+rails g scaffold photo name product:references active:boolean lock:boolean
+rails g scaffold offer user:references product:references price_offer:float active:boolean lock:boolean
+rails g scaffold transaction product:references user:references value:float active:boolean lock:boolean
+rails g scaffold qualification transaction:references value:integer feedback:text active:boolean
+
+rails destroy scaffold type_user
+rails destroy scaffold user
+rails destroy scaffold country
+rails destroy scaffold state
+rails destroy scaffold city
+rails destroy scaffold town
+rails destroy scaffold unit
+rails destroy scaffold measurement_unit
+rails destroy scaffold material
+rails destroy scaffold product
+rails destroy scaffold photo
+rails destroy scaffold offer
+rails destroy scaffold transaction
+rails destroy scaffold qualification
