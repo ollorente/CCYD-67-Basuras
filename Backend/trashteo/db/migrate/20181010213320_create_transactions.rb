@@ -4,8 +4,8 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
       t.references :product, foreign_key: true
       t.references :user, foreign_key: true
       t.float :value
-      t.boolean :active
-      t.boolean :lock
+      t.boolean :active, default: true
+      t.boolean :lock, default: false
 
       t.timestamps
     end
