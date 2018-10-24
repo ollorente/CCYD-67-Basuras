@@ -157,4 +157,4 @@
 # TypeUser.create(name: 'client')
 # TypeUser.create(name: 'user')
 
-User.create(:phone => '1234567890', :email => 'email@email.com', :password => '1234', :password_confirmation => '1234', :type_user_id => 1, :town => 12, :active => true, :lock => false)
+User.create(:phone => '1234567890', :email => 'email@email.com', :password => '1234', :password_confirmation => '1234', :type_user_id => 1, :town_id => 12, :active => true, :lock => false)
